@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('package_type', ['camp', 'one day trip', 'makan malam', 'makan siang', 'game'])->nullable();
             $table->smallInteger('max_capacity')->nullable();
             $table->smallInteger('min_capacity')->nullable();
-            $table->enum('week_type', ['weekdays', 'weekends']);
+            $table->enum('week_type', ['weekdays', 'weekends'])->nullable();
             $table->integer('price');
-            $table->enum('price_type', ['pack', 'night']);
+            $table->enum('price_type', ['pack', 'night'])->nullable();
             $table->json('benefits')->nullable();
             $table->string('total_stays')->nullable();
             $table->boolean('is_published')->default(0);
